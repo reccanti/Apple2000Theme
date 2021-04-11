@@ -1,0 +1,311 @@
+/**
+ * @TODOs
+ * 
+ * Spacing is kind of all over the place. Once there's enough
+ * things, let's see if we can make a pattern for that.
+ * ~reccanti 4/9/2021
+ *
+ * Need to better delineate between "general styling" and "styling for
+ * for the styleguide". Will update that!
+ * ~reccanti 4/10/2021
+ */
+@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@900&family=Fira+Sans:wght@200;400&family=Fira+Sans+Extra+Condensed:wght@400&display=swap");
+
+/**
+ * Let's put some basic setup stuff here for now...
+ */
+:root {
+  --background-color: #161616;
+  --foreground-color: #ffffff;
+
+  /* --background-color: #ffffff;
+  --foreground-color: #161616; */
+
+  --font-headers: "Darker Grotesque";
+  --font-regular: "Fira Sans";
+
+  --base-font-size: 1.4rem;
+  --font-header-scale-factor: 0.25;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.wrapper > *:not(:first-child) {
+  margin-top: 1.5rem;
+}
+
+.wrapper section:not(:first-child) {
+  margin-top: 4.5rem;
+}
+
+/**
+ * @TODO - Maybe it's not the best idea to have such a
+ * specific way of targeting this...
+ */
+section div > *:not(:first-child) {
+  margin-top: 1.5rem;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--foreground-color);
+
+  font-family: var(--font-regular);
+  font-weight: 100;
+  font-size: var(--base-font-size);
+  line-height: 1.35;
+}
+
+/**
+ * Let's make those horizontal rules fancy 🎩
+ */
+hr {
+  border: none;
+  border-bottom: 0.35rem dotted;
+  color: var(--foreground-color);
+}
+
+/**
+ * Umm, I guess some list things
+ */
+ul > li,
+ol > li {
+  margin-left: 1.5rem;
+}
+
+li:not(:first-child) {
+  margin-top: 0.5rem;
+}
+
+/**
+ * Heck yeah. Time for links, baby
+ */
+a {
+  display: inline-block;
+  color: var(--foreground-color);
+  font-weight: bold;
+}
+
+a:hover {
+  background: var(--foreground-color);
+  color: var(--background-color);
+}
+
+/**
+ * Header Crap!
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headers);
+  line-height: 1;
+}
+
+h6 {
+  font-size: calc(
+    var(--base-font-size) + var(--font-header-scale-factor) * 1rem
+  );
+}
+h5 {
+  font-size: calc(
+    var(--base-font-size) + var(--font-header-scale-factor) * 2rem
+  );
+}
+h4 {
+  font-size: calc(
+    var(--base-font-size) + var(--font-header-scale-factor) * 3rem
+  );
+}
+h3 {
+  font-size: calc(
+    var(--base-font-size) + var(--font-header-scale-factor) * 5rem
+  );
+}
+h2 {
+  font-size: calc(
+    var(--base-font-size) + var(--font-header-scale-factor) * 8rem
+  );
+}
+h1 {
+  font-size: calc(
+    var(--base-font-size) + var(--font-header-scale-factor) * 13rem
+  );
+}
+
+/**
+ * This is the place where we'll make our cool sections 😎
+ */
+
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+section > div {
+  z-index: 10;
+  background: var(--background-color);
+  border: 1px solid var(--foreground-color);
+  padding: 1.5rem 2.5rem 1.5rem 1.5rem; /* Should this be a variable? I dunno! maybe later */
+}
+
+section::after {
+  content: "";
+  flex: 1;
+  display: block;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 100%;
+  height: 100%;
+
+  background-size: 0.5rem 0.5rem;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--foreground-color) 0,
+    var(--foreground-color) 1px,
+    var(--background-color) 0,
+    var(--background-color) 50%
+  );
+}
+
+/**
+ * Tag, you're it!
+ */
+.Tag {
+  all: unset;
+  margin: 0 !important;
+  /* padding: 0; */
+  font-size: calc(var(--base-font-size) * 0.7);
+}
+
+.TagList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.TagList > .Tag:not(:first-child)::before {
+  content: "|";
+  margin: 0 1rem;
+  /* margin-right: 1ex; */
+}
+
+/**
+ * You've seen links, but you've never seen
+ * my fancy links ✨
+ */
+
+.LinkGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+}
+
+/* 
+ * @TODO - Not sold on these sizes
+ * ~reccanti 4/10/2021
+ */
+@media (max-width: 700px) {
+  .LinkGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.LinkGridItem {
+  display: flex;
+  margin: 0 !important; /* Bleh */
+  position: relative;
+}
+
+.LinkGridItem img {
+  width: 100%;
+  /* filter: grayscale(1); */
+}
+
+.LinkGridItem a {
+  display: flex;
+  width: 100%;
+}
+
+.LinkGridItem-description {
+  display: none;
+}
+
+/**
+ * These effects are a little jarring. Maybe use some
+ * sort of "wipe" effect?
+ */
+.LinkGridItem:hover .LinkGridItem-description {
+  display: flex;
+  position: absolute;
+  background: var(--foreground-color);
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  margin: 1rem;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Fira Sans Extra Condensed";
+  mix-blend-mode: lighten;
+  font-size: calc(var(--base-font-size) * 1.5);
+}
+
+.LinkGridItem:hover:before {
+  content: "";
+  pointer-events: none;
+
+  position: absolute;
+  background: var(--background-color);
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+}
+
+/**
+ * Buttons? Classic
+ */
+
+/**
+  * Really, you're calling it Button?
+  */
+.Button {
+  all: unset;
+  cursor: pointer;
+  border: 1px solid var(--foreground-color);
+  padding: 1rem;
+  text-align: center;
+}
+
+.Button:hover {
+  background: var(--foreground-color);
+  color: var(--background-color);
+}
+
+.Comic img {
+  width: 100%;
+}
+
+.Comic-nav {
+  display: flex;
+}
+
+.Comic-nav > * {
+  flex: 1;
+}
