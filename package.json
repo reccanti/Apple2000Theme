@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/reccanti/Apple2000Theme#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^0.12.1"
+    "@11ty/eleventy": "^0.12.1",
+    "mkdirp": "^1.0.4",
+    "sass": "^1.32.8"
   }
 }
