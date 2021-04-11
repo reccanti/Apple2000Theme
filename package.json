@@ -4,7 +4,7 @@
   "description": "A fancy theme for my website",
   "main": ".eleventy.js",
   "scripts": {
-    "build": "eleventy"
+    "build": "npm run eleventy"
   },
   "repository": {
     "type": "git",
