@@ -27,6 +27,7 @@
 
   /* This is where we define ALL the font sizes!!! */
   --base-font-size: 1.4rem;
+
   --header-font-scale-factor: 0.25;
   --h6-font-size: calc(
     var(--base-font-size) + var(--header-font-scale-factor) * 1rem
@@ -46,8 +47,28 @@
   --h1-font-size: calc(
     var(--base-font-size) + var(--header-font-scale-factor) * 13rem
   );
+
   --tag-font-scale-factor: 0.7;
   --tag-font-size: calc(var(--base-font-size) * var(--tag-font-scale-factor));
+
+  --grid-link-font-size: calc(var(--base-font-size) * 1.5)
+
+  /**
+   * Managing line heights
+   */
+  --text-line-height: 1.35;
+  --header-line-height: 1;
+
+  /**
+   * Space stuff 🚀
+   */
+  --base-space-size: 1rem;
+  --space-half:calc(var(--base-font-size) * 0.5);
+  --space-1: calc(var(--base-font-size) * 1);
+  --space-2: calc(var(--base-font-size) * 2);
+  --space-3: calc(var(--base-font-size) * 3);
+  --space-4: calc(var(--base-font-size) * 5);
+  --space-5: calc(var(--base-font-size) * 8);
 }
 
 * {
@@ -59,15 +80,15 @@
 .wrapper {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--space-2);
 }
 
 .wrapper > *:not(:first-child) {
-  margin-top: 1.5rem;
+  margin-top: var(--space-2);
 }
 
 .wrapper section:not(:first-child) {
-  margin-top: 4.5rem;
+  margin-top: var(--space-3);
 }
 
 /**
@@ -82,10 +103,10 @@ body {
   background: var(--background-color);
   color: var(--foreground-color);
 
-  font-family: var(--font-regular);
   font-weight: 100;
+  font-family: var(--font-regular);
   font-size: var(--base-font-size);
-  line-height: 1.35;
+  line-height: 1.35; /* I don't know if this should be a variable. Haven't needed it yet though! */
 }
 
 /**
@@ -102,11 +123,11 @@ hr {
  */
 ul > li,
 ol > li {
-  margin-left: 1.5rem;
+  margin-left: var(--space-1);
 }
 
 li:not(:first-child) {
-  margin-top: 0.5rem;
+  margin-top: var(--space-1);
 }
 
 /**
@@ -170,7 +191,7 @@ section > div {
   z-index: 10;
   background: var(--background-color);
   border: 1px solid var(--foreground-color);
-  padding: 1.5rem 2.5rem 1.5rem 1.5rem; /* Should this be a variable? I dunno! maybe later */
+  padding: var(--space-1);
 }
 
 section::after {
@@ -178,12 +199,13 @@ section::after {
   flex: 1;
   display: block;
   position: absolute;
-  top: 1rem;
-  left: 1rem;
   width: 100%;
   height: 100%;
 
-  background-size: 0.5rem 0.5rem;
+  top: var(--space-1);
+  left: var(--space-1);
+
+  background-size: 0.5rem 0.5rem; /* Yeah this is really specific to this one thing, so I don't want to put this in a variable yet */
   background-image: repeating-linear-gradient(
     45deg,
     var(--foreground-color) 0,
@@ -209,7 +231,7 @@ section::after {
 
 .TagList > .Tag:not(:first-child)::before {
   content: "|";
-  margin: 0 1rem;
+  margin: 0 var(--space-1);
 }
 
 /**
@@ -242,7 +264,6 @@ section::after {
 
 .LinkGridItem img {
   width: 100%;
-  /* filter: grayscale(1); */
 }
 
 .LinkGridItem a {
@@ -262,17 +283,17 @@ section::after {
   display: flex;
   position: absolute;
   background: var(--foreground-color);
-  width: calc(100% - 2rem);
-  height: calc(100% - 2rem);
-  margin: 1rem;
-  padding: 0.5rem;
+  width: calc(100% - var(--space-1) * 2);
+  height: calc(100% - var(--space-1) * 2);
+  margin: var(--space-1);
+  padding: var(--space-1);
   align-items: center;
   justify-content: center;
   text-align: center;
   text-transform: uppercase;
   font-family: "Fira Sans Extra Condensed";
+  font-size: var(--grid-link-font-size);
   mix-blend-mode: lighten;
-  font-size: calc(var(--base-font-size) * 1.5);
 }
 
 .LinkGridItem:hover:before {
@@ -297,7 +318,7 @@ section::after {
   all: unset;
   cursor: pointer;
   border: 1px solid var(--foreground-color);
-  padding: 1rem;
+  padding: var(--space-half);
   text-align: center;
 }
 
