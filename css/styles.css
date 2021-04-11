@@ -96,7 +96,7 @@
  * specific way of targeting this...
  */
 section div > *:not(:first-child) {
-  margin-top: 1.5rem;
+  margin-top: var(--space-1);
 }
 
 body {
@@ -327,6 +327,10 @@ section::after {
   color: var(--background-color);
 }
 
+/**
+ * Comics!!!
+ */
+
 .Comic img {
   width: 100%;
 }
@@ -337,4 +341,83 @@ section::after {
 
 .Comic-nav > * {
   flex: 1;
+}
+
+/**
+ * Input elements!!!
+ */
+label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: var(--tag-font-size);
+}
+
+/**
+ * @TODO - I don't like that I need to use this weird class,
+ * but I don't have a better way of dealing with this right
+ * now. Maybe use a :has() polyfill?
+ */
+label.required::after {
+  content: "(required)";
+}
+
+label > * {
+  margin-top: var(--space-half);
+}
+
+/**
+ * @TODO It seems like, in addition to the "unset", I need to
+ * also do some sort of "reset". Bleh
+ * ~reccanti 4/12/2021
+ */
+textarea {
+  /* resets */
+  background: unset;
+  font: unset;
+
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+
+  box-sizing: border-box;
+  resize: both;
+  border: 1px solid var(--foreground-color);
+  padding: var(--space-half);
+  font-style: italic;
+  font-size: var(--base-font-size);
+  width: 100%;
+}
+
+textarea:focus {
+  outline: none;
+  background-color: var(--foreground-color);
+  color: var(--background-color);
+  font-style: normal;
+}
+
+input[type="text"] {
+  /* resets */
+  background: unset;
+  font: unset;
+
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+
+  box-sizing: border-box;
+  border: 1px solid var(--foreground-color);
+  padding: var(--space-half);
+  font-style: italic;
+  font-size: var(--base-font-size);
+  width: 100%;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  background-color: var(--foreground-color);
+  color: var(--background-color);
+  font-style: normal;
+}
+
+input:required {
+  border-style: double;
 }
