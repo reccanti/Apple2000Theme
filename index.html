@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apple ][000</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  </head>
+  <body>
+    <main class="wrapper">
+      <!-- Splash -->
+      <section>
+        <div>
+          <h1>Apple ][000!</h1>
+        </div>
+      </section>
+      <!-- Intro -->
+      <section>
+        <div>
+          <h2>Welcome to Apple ][000!</h2>
+          <p>
+            This is a place to iterate on this new theme. The goal is to
+            replicate the limited capabilites of early computers, while also
+            giving them a modern twist. I know—real original—but it's my theme
+            and I'll do what I want, dammit!
+          </p>
+          <p>
+            This is a small theme, a baby if you will. I don't want to plan for
+            every scenario and make it super generalized. Instead, my goal here
+            is to just create examples as I need them and use that as the basis
+            for this theme
+          </p>
+        </div>
+      </section>
+      <!-- Let's replicate a blog entry -->
+      <section>
+        <div>
+          <h2>Let's Simulate a Blog Entry!</h2>
+          <p>
+            I'm just going to try and reprint a blog post I've posted and see
+            how it looks!
+          </p>
+          <hr />
+          <h1>My (silly) Local WordPress Setup</h1>
+          <nav title="Blog Post Actions">
+            <ul class="TagList">
+              <li class="Tag"><a href="#">bwilcox</a></li>
+              <li class="Tag"><a href="#">Uncategorized</a></li>
+              <li class="Tag"><a href="#">Leave a comment</a></li>
+              <li class="Tag"><a href="#">May 17, 2020</a></li>
+              <li class="Tag">4 Minutes</li>
+            </ul>
+          </nav>
+          <p>
+            Welcome to <a href="https://blair.pictures/">blair.pictures</a>!
+            This is the first WordPress site I’ve developed on my own. Until
+            now, I’ve mostly made static sites like
+            <a href="https://jekyllrb.com/">Jekyll</a> or
+            <a href="https://www.gatsbyjs.org/">Gatsby</a>. These frameworks
+            offer a self-contained environment that can be run entirely through
+            the terminal, which I’ve always found easier to wrap my head around.
+            I didn’t want to lose that with this site, so I created this (janky)
+            setup to work around it!
+          </p>
+          <h2>Why use WordPress?</h2>
+          <p>
+            So why would I use WordPress if I like the toolchains of static
+            sites so much? It really came down to images. Basically, the way you
+            manage content on a static site is by committing files directly to a
+            Git repository. This is fine for text-heavy sites, but it’s not
+            great for sites like this that use lots of images. Your choices are
+            to commit large, binary files to your git repo—which will quickly
+            inflate its size—or to figure out another way of hosting these
+            images.
+          </p>
+          <p>
+            Though there are some options available, most of the easy-to-use
+            solutions like Contentful, were fairly expensive. Meanwhile
+            Dreamhost offered an inexpensive WordPress Hosting plan with
+            unlimited storage. On top of that I would have an environment that I
+            could access from several devices, which is really helpful since I
+            do a lot of my drawing on my iPad. So with all those factors
+            considered, I decided to bite the bullet and make a WordPress site!
+          </p>
+          <h2>Creating an Isolate Environment with Docker</h2>
+          <p>
+            With WordPress selected, I needed to figure out my local development
+            environment. I always found this part intimidating. Unlike with a
+            static site, where all you have to do is download some files and run
+            some commands on the terminal, with WordPress you needto set up an
+            entire LAMP stack! Tools like MAMP make easier, but I would always
+            worried I’d leave some process running in the background, or I’d
+            have trouble resetting the database. I wanted to be able to launch
+            and teardown my environment easily.
+          </p>
+          <p>
+            The tool I ended up turning to was Docker. I’ve been using it a lot
+            at work recently, and I liked its ability to create isolated,
+            composable environments. Even better, there was already a WordPress
+            Docker image, so creating an environment was as simple as creating a
+            docker-compose.yaml file!
+          </p>
+          <p>
+            Still, some of the functionality I wanted was a little verbose, and
+            there were some gotchas—like how to completely reset the database.
+            To make these common functions a little easier to remember, I
+            created some npm run scripts to simplify things:
+          </p>
+          <ul>
+            <li>
+              <code>launch</code> – Setup the docker container using
+              docker-compose
+            </li>
+            <li>
+              <code>stop</code> – Stop running the docker container (but leave
+              everything in-tact)
+            </li>
+            <li>
+              <code>teardown</code> – Stop and remove all volumes associated
+              with the site. Useful in case things get too out-of-hand and you
+              want to start from scratch
+            </li>
+            <li>
+              <code>ssh</code> – Essentially just executes bash inside the
+              docker container. Useful for when you want to explore the file
+              system inside the image
+            </li>
+          </ul>
+          <p>
+            With these, I was able to create an isolated WordPress environment
+            that I could setup and teardown at will!
+          </p>
+          <h2>Setting Up Live Development</h2>
+          <p>
+            The next thing I needed to figure out was how to make changes to the
+            site. My solution was to create 2 folders at the root of the
+            environment, plugins and themes. The contents of these folders are
+            .gitignored, so I could just git clone existing themes and plugins
+            into them. Then, I created a new npm run script to copy those files
+            into the container:
+          </p>
+          <ul>
+            <li>
+              <code>build</code> – copies the contents of plugins and themes
+              into the appropriate location in the Docker container
+            </li>
+          </ul>
+          <p>
+            Still, this wasn’t great for getting immediate feedback. I wanted to
+            be able to copy files into the container as I was editing them.
+            Fortunately, I was able to do that with Gulp. Though I’ve mostly
+            moved to using Webpack for most of my JavaScript development, Gulp
+            is really useful when all I want to do is run a command when my file
+            changes. I stored this in another script:
+          </p>
+          <ul>
+            <li>
+              <code>dev</code> – runs build to copy the initial files over, then
+              runs gulp to watch for changes.
+            </li>
+          </ul>
+          <p>
+            With that, I was able to see changes in real-time as I was making
+            them! This solution might not scale if I need to start modifying
+            other types of WordPress files, but it suits my needs for now. You
+            can see the final environment setup in my comic-site-env repo.
+          </p>
+          <h2>Pushing My Changes to Production</h2>
+          <p>
+            With the Basic WordPress plan, the WordPress environment is already
+            setup, so when I’m ready to push my changes to production, I just
+            upload my files on their web panel. This isn’t too difficult, since
+            all my changes are limited to themes and plugins.
+          </p>
+          <p>
+            I’m not super happy with how manual this step is, so I’d like to
+            automate it using something like ssh and rsync in the future.
+          </p>
+          <h2>In Summary…</h2>
+          <p>My local development workflow is the following:</p>
+          <ul>
+            <li>Launch the site in a Docker container</li>
+            <li>Copy themes and plugins into the container using Gulp</li>
+            <li>Manually upload the changes when I’m done</li>
+          </ul>
+          <p>
+            This is admittedly a roundabout and hacky setup, but I’m happy with
+            how I’m able to keep everything self-contained and controlled with
+            terminal commands! I haven’t hit any major pain-points with this
+            setup—in fact I’m able to do a lot more customization without
+            working with code. Still I’m hoping to keep updating and refining
+            this process.
+          </p>
+          <p>
+            What are your thoughts on this setup? Do you have any janky setups
+            you’d like to share? Is there anything you’d like me to write about
+            next? Leave a comment and let me know!
+          </p>
+        </div>
+      </section>
+      <!-- My fancy way of linking to projects -->
+      <section>
+        <div>
+          <h2>Fancy Link Grid</h2>
+          <p>
+            I don't know what else to call this. I just want a nice way of
+            showing off links to projects!
+          </p>
+          <hr />
+          <ul class="LinkGrid">
+            <li class="LinkGridItem">
+              <!-- I'm not sure if these links are accessible. Will need to do some testing for that -->
+              <a href="#"
+                ><div class="LinkGridItem-description">
+                  <div class="LinkGridItem-innerDescription">
+                    My Face is not My Own
+                  </div>
+                </div>
+                <img src="assets/MFINMO-thumbnail.jpg" role="presentation"
+              /></a>
+            </li>
+            <li class="LinkGridItem">
+              <a href="#"
+                ><div class="LinkGridItem-description">
+                  <div class="LinkGridItem-innerDescription">Sketch</div>
+                </div>
+                <img src="assets/sketches-preview.jpeg" role="presentation"
+              /></a>
+            </li>
+            <li class="LinkGridItem">
+              <a href="#"
+                ><div class="LinkGridItem-description">
+                  <div class="LinkGridItem-innerDescription">The Faerie</div>
+                </div>
+                <img
+                  src="assets/TheFaerie-description-2.jpg"
+                  role="presentation"
+              /></a>
+            </li>
+            <li class="LinkGridItem">
+              <a href="#"
+                ><div class="LinkGridItem-description">
+                  <div class="LinkGridItem-innerDescription">The Wyrm</div>
+                </div>
+                <img src="assets/thewyrm-preview.jpg" role="presentation"
+              /></a>
+            </li>
+            <li class="LinkGridItem">
+              <a href="#"
+                ><div class="LinkGridItem-description">
+                  <div class="LinkGridItem-innerDescription">The Faerie</div>
+                </div>
+                <img
+                  src="assets/TheFaerie-description-2.jpg"
+                  role="presentation"
+              /></a>
+            </li>
+            <li class="LinkGridItem">
+              <a href="#"
+                ><div class="LinkGridItem-description">
+                  <div class="LinkGridItem-innerDescription">The Wyrm</div>
+                </div>
+                <img src="assets/thewyrm-preview.jpg" role="presentation"
+              /></a>
+            </li>
+            <li class="LinkGridItem">
+              <a href="#"
+                ><div class="LinkGridItem-description">
+                  <div aria-label class="LinkGridItem-innerDescription">
+                    My Face is not My Own
+                  </div>
+                </div>
+                <img src="assets/MFINMO-thumbnail.jpg" role="presentation"
+              /></a>
+            </li>
+            <li class="LinkGridItem">
+              <a href="#"
+                ><div class="LinkGridItem-description">
+                  <div class="LinkGridItem-innerDescription">Sketch</div>
+                </div>
+                <img src="assets/sketches-preview.jpeg" role="presentation"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!-- Let's document all our headers -->
+      <section>
+        <div>
+          <h2>Comic Page</h2>
+          <p>
+            Oh yeah, here it is, the moment you've all been waiting for. Let's
+            show the comic page!!!
+          </p>
+          <hr />
+          <div class="Comic">
+            <img aria-labelledby="Transcription" src="assets/thewyrm5.jpg" />
+            <nav class="Comic-nav">
+              <button><<</button>
+              <button><</button>
+              <button>></button>
+              <button>>></button>
+            </nav>
+            <div id="Transcription" class="Comic-transcription">
+              <p>Panel 1</p>
+              <p>Wyrm: "I've burned nations"</p>
+              <p>Wyrm: "Flattened mountains!"</p>
+              <p>Panel 2</p>
+              <p>Wyrm: "And they think I can be killed..."</p>
+              <p>Panel 3</p>
+              <p>Wyrm: "By some abandoned pup?"</p>
+            </div>
+          </div>
+          <hr />
+          <label class="required">Comment<textarea></textarea></label>
+          <label class="required"
+            >Name
+            <input type="text" required />
+          </label>
+          <label class="required"
+            >Email
+            <input type="text" required />
+          </label>
+          <label
+            >Website
+            <input type="text" />
+          </label>
+        </div>
+      </section>
+      <section>
+        <div>
+          <h2>Text!</h2>
+          <p>
+            It's kind of become apparent that I need to be able to compare the
+            headers and their hierarchy relative to each other. So that's what's
+            going on in this section!
+          </p>
+          <p>UPDATE: this is a section for text in general now!</p>
+          <hr />
+          <h3>Headers!</h3>
+          <h1>Here's Header 1</h1>
+          <h2>Here's Header 2</h2>
+          <h3>Here's Header 3</h3>
+          <h4>Here's Header 4</h4>
+          <h5>Here's Header 5</h5>
+          <h6>Here's Header 6</h6>
+          <hr />
+          <h3>Base Text</h3>
+          <p>Don't mind me, just some basic text</p>
+          <p><a href="#">Whoa buddy, a link? Getting fancy!</a></p>
+          <hr />
+          <h3>Tags</h3>
+          <ul class="TagList">
+            <li class="Tag">Tag 1</li>
+            <li class="Tag">Tag 2</li>
+            <li class="Tag">Tag 3</li>
+            <li class="Tag"><a href="#">Fancy Link Tag</a></li>
+          </ul>
+        </div>
+      </section>
+      <!-- Forms??? I feel so professional! -->
+      <section>
+        <div>
+          <h2>Forms!</h2>
+          <p>
+            Time for every web designer's favorite step of the process:
+            designing all the goddamn form elements!
+          </p>
+          <p>
+            Since it would be a pain-in-the-butt to design EVERY form element,
+            I'm just going to handle this on a case-by-case basis, adding more
+            as needed!
+          </p>
+          <hr />
+          <label>
+            Textarea
+            <textarea>Hello</textarea>
+          </label>
+          <label>
+            Text Input
+            <input type="text" />
+          </label>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
