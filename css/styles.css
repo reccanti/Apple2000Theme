@@ -139,7 +139,7 @@ a {
   font-weight: bold;
 }
 
-a:hover {
+a:hover, a:focus {
   background: var(--foreground-color);
   color: var(--background-color);
 }
@@ -293,11 +293,14 @@ section::after {
  * These effects are a little jarring. Maybe use some
  * sort of "wipe" effect?
  */
-.LinkGridItem:hover .LinkGridItem-description {
+.LinkGridItem:hover .LinkGridItem-description,
+.LinkGridItem a:focus .LinkGridItem-description {
   opacity: 1;
 }
 
-.LinkGridItem:hover:before {
+.LinkGridItem:hover:before,
+.LinkGridItem a:focus:before
+ {
   content: "";
   pointer-events: none;
 
@@ -312,10 +315,7 @@ section::after {
  * Buttons? Classic
  */
 
-/**
-  * Really, you're calling it Button?
-  */
-.Button {
+button {
   all: unset;
   cursor: pointer;
   border: 1px solid var(--foreground-color);
@@ -323,7 +323,7 @@ section::after {
   text-align: center;
 }
 
-.Button:hover {
+button:hover, button:focus {
   background: var(--foreground-color);
   color: var(--background-color);
 }
