@@ -8,6 +8,14 @@
  * Need to better delineate between "general styling" and "styling for
  * for the styleguide". Will update that!
  * ~reccanti 4/10/2021
+ *
+ * It would probably be better to move to a "mobile-first" layout
+ * where we progressively add complexity as the screen real-estate
+ * increases. Right now this looks kinda jank on mobile safari :(
+ * ~reccanti 4/11/2021
+ *
+ * You know what, to hell with it! Let's bring this bad boy to Sass
+ * ~reccanti 4/11/2021
  */
 @import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@900&family=Fira+Sans:wght@200;400&family=Fira+Sans+Extra+Condensed:wght@400&display=swap");
 
@@ -264,11 +272,13 @@ section::after {
 
 .LinkGridItem img {
   width: 100%;
+  flex: 0 0 auto;
 }
 
 .LinkGridItem a {
   display: flex;
   width: 100%;
+  align-items: center;
 }
 
 .LinkGridItem-description {
@@ -287,6 +297,7 @@ section::after {
   font-size: var(--grid-link-font-size);
   mix-blend-mode: lighten;
   opacity: 0;
+  top: 0; /* Fixes a weird safari bug where the text was being shifted down :shrug: */
 }
 
 /**
