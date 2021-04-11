@@ -1,0 +1,26 @@
+{
+  "name": "apple2000theme",
+  "version": "0.0.1",
+  "description": "A fancy theme for my website",
+  "main": ".eleventy.js",
+  "scripts": {
+    "build": "eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reccanti/Apple2000Theme.git"
+  },
+  "keywords": [
+    "CSS",
+    "Theme"
+  ],
+  "author": "reccanti <reccanti@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/reccanti/Apple2000Theme/issues"
+  },
+  "homepage": "https://github.com/reccanti/Apple2000Theme#readme",
+  "devDependencies": {
+    "eleventy": "^1.0.6"
+  }
+}
