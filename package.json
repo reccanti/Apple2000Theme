@@ -1,5 +1,5 @@
 {
-  "name": "apple2000theme",
+  "name": "@reccanti/apple2000",
   "version": "0.0.1",
   "description": "A fancy theme for my website",
   "main": ".eleventy.js",
