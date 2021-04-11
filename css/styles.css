@@ -272,14 +272,6 @@ section::after {
 }
 
 .LinkGridItem-description {
-  display: none;
-}
-
-/**
- * These effects are a little jarring. Maybe use some
- * sort of "wipe" effect?
- */
-.LinkGridItem:hover .LinkGridItem-description {
   display: flex;
   position: absolute;
   background: var(--foreground-color);
@@ -294,6 +286,15 @@ section::after {
   font-family: "Fira Sans Extra Condensed";
   font-size: var(--grid-link-font-size);
   mix-blend-mode: lighten;
+  opacity: 0;
+}
+
+/**
+ * These effects are a little jarring. Maybe use some
+ * sort of "wipe" effect?
+ */
+.LinkGridItem:hover .LinkGridItem-description {
+  opacity: 1;
 }
 
 .LinkGridItem:hover:before {

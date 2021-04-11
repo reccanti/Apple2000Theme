@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" />
   </head>
   <body>
-    <div class="wrapper">
+    <main class="wrapper">
       <!-- Splash -->
       <section>
         <div>
@@ -43,7 +43,7 @@
           </p>
           <hr />
           <h1>My (silly) Local WordPress Setup</h1>
-          <nav>
+          <nav title="Blog Post Actions">
             <ul class="TagList">
               <li class="Tag"><a href="#">bwilcox</a></li>
               <li class="Tag"><a href="#">Uncategorized</a></li>
@@ -217,7 +217,7 @@
                     My Face is not My Own
                   </div>
                 </div>
-                <img src="assets/MFINMO-thumbnail.jpg"
+                <img src="assets/MFINMO-thumbnail.jpg" role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
@@ -225,7 +225,7 @@
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">Sketch</div>
                 </div>
-                <img src="assets/sketches-preview.jpeg"
+                <img src="assets/sketches-preview.jpeg" role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
@@ -233,7 +233,9 @@
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">The Faerie</div>
                 </div>
-                <img src="assets/TheFaerie-description-2.jpg"
+                <img
+                  src="assets/TheFaerie-description-2.jpg"
+                  role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
@@ -241,7 +243,7 @@
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">The Wyrm</div>
                 </div>
-                <img src="assets/thewyrm-preview.jpg"
+                <img src="assets/thewyrm-preview.jpg" role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
@@ -249,7 +251,9 @@
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">The Faerie</div>
                 </div>
-                <img src="assets/TheFaerie-description-2.jpg"
+                <img
+                  src="assets/TheFaerie-description-2.jpg"
+                  role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
@@ -257,17 +261,17 @@
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">The Wyrm</div>
                 </div>
-                <img src="assets/thewyrm-preview.jpg"
+                <img src="assets/thewyrm-preview.jpg" role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
               <a href="#"
                 ><div class="LinkGridItem-description">
-                  <div class="LinkGridItem-innerDescription">
+                  <div aria-label class="LinkGridItem-innerDescription">
                     My Face is not My Own
                   </div>
                 </div>
-                <img src="assets/MFINMO-thumbnail.jpg"
+                <img src="assets/MFINMO-thumbnail.jpg" role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
@@ -275,7 +279,7 @@
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">Sketch</div>
                 </div>
-                <img src="assets/sketches-preview.jpeg"
+                <img src="assets/sketches-preview.jpeg" role="presentation"
               /></a>
             </li>
           </ul>
@@ -291,13 +295,22 @@
           </p>
           <hr />
           <div class="Comic">
-            <img src="assets/thewyrm5.jpg" />
+            <img aria-labelledby="Transcription" src="assets/thewyrm5.jpg" />
             <nav class="Comic-nav">
               <button class="Button"><<</button>
               <button class="Button"><</button>
               <button class="Button">></button>
               <button class="Button">>></button>
             </nav>
+            <div id="Transcription" class="Comic-transcription">
+              <p>Panel 1</p>
+              <p>Wyrm: "I've burned nations"</p>
+              <p>Wyrm: "Flattened mountains!"</p>
+              <p>Panel 2</p>
+              <p>Wyrm: "And they think I can be killed..."</p>
+              <p>Panel 3</p>
+              <p>Wyrm: "By some abandoned pup?"</p>
+            </div>
           </div>
           <hr />
           <label class="required">Comment<textarea></textarea></label>
@@ -370,6 +383,6 @@
           </label>
         </div>
       </section>
-    </div>
+    </main>
   </body>
 </html>
