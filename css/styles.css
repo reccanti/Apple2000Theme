@@ -15,17 +15,39 @@
  * Let's put some basic setup stuff here for now...
  */
 :root {
+  /* Here's our colors!!! */
   --background-color: #161616;
   --foreground-color: #ffffff;
-
   /* --background-color: #ffffff;
   --foreground-color: #161616; */
 
+  /* Setting up our fonts */
   --font-headers: "Darker Grotesque";
   --font-regular: "Fira Sans";
 
+  /* This is where we define ALL the font sizes!!! */
   --base-font-size: 1.4rem;
-  --font-header-scale-factor: 0.25;
+  --header-font-scale-factor: 0.25;
+  --h6-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 1rem
+  );
+  --h5-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 2rem
+  );
+  --h4-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 3rem
+  );
+  --h3-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 5rem
+  );
+  --h2-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 8rem
+  );
+  --h1-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 13rem
+  );
+  --tag-font-scale-factor: 0.7;
+  --tag-font-size: calc(var(--base-font-size) * var(--tag-font-scale-factor));
 }
 
 * {
@@ -116,34 +138,22 @@ h6 {
 }
 
 h6 {
-  font-size: calc(
-    var(--base-font-size) + var(--font-header-scale-factor) * 1rem
-  );
+  font-size: var(--h6-font-size);
 }
 h5 {
-  font-size: calc(
-    var(--base-font-size) + var(--font-header-scale-factor) * 2rem
-  );
+  font-size: var(--h5-font-size);
 }
 h4 {
-  font-size: calc(
-    var(--base-font-size) + var(--font-header-scale-factor) * 3rem
-  );
+  font-size: var(--h4-font-size);
 }
 h3 {
-  font-size: calc(
-    var(--base-font-size) + var(--font-header-scale-factor) * 5rem
-  );
+  font-size: var(--h3-font-size);
 }
 h2 {
-  font-size: calc(
-    var(--base-font-size) + var(--font-header-scale-factor) * 8rem
-  );
+  font-size: var(--h2-font-size);
 }
 h1 {
-  font-size: calc(
-    var(--base-font-size) + var(--font-header-scale-factor) * 13rem
-  );
+  font-size: var(--h1-font-size);
 }
 
 /**
@@ -188,9 +198,8 @@ section::after {
  */
 .Tag {
   all: unset;
-  margin: 0 !important;
-  /* padding: 0; */
-  font-size: calc(var(--base-font-size) * 0.7);
+  margin: 0 !important; /* Bleh */
+  font-size: var(--tag-font-size);
 }
 
 .TagList {
@@ -201,7 +210,6 @@ section::after {
 .TagList > .Tag:not(:first-child)::before {
   content: "|";
   margin: 0 1rem;
-  /* margin-right: 1ex; */
 }
 
 /**
