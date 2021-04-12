@@ -1,21 +1,9 @@
 /**
  * @TODOs
  * 
- * Spacing is kind of all over the place. Once there's enough
- * things, let's see if we can make a pattern for that.
- * ~reccanti 4/9/2021
- *
  * Need to better delineate between "general styling" and "styling for
  * for the styleguide". Will update that!
  * ~reccanti 4/10/2021
- *
- * It would probably be better to move to a "mobile-first" layout
- * where we progressively add complexity as the screen real-estate
- * increases. Right now this looks kinda jank on mobile safari :(
- * ~reccanti 4/11/2021
- *
- * You know what, to hell with it! Let's bring this bad boy to Sass
- * ~reccanti 4/11/2021
  */
 @use "vendor/reset";
 @use "elements";
