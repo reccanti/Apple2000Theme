@@ -177,3 +177,58 @@
     }
   }
 }
+
+/**
+ * Splash 💦
+ */
+
+.Splash {
+  $root: &;
+  // margin: calc(-1 * var(--space-1));
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: top;
+  transform: rotate(-5deg) skew(-5deg);
+
+  &--big {
+    #{$root}-main {
+      font-size: min(30vw, 17rem);
+    }
+  }
+
+  &-main {
+    font-size: min(20vw, 12rem);
+    font-family: "Fira Sans Extra Condensed";
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+
+      z-index: 1;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      background-size: 0.5rem 0.5rem; /* Yeah this is really specific to this one thing, so I don't want to put this in a variable yet */
+      background-image: repeating-linear-gradient(
+        45deg,
+        var(--foreground-color) 0,
+        var(--foreground-color) 1px,
+        var(--background-color) 0,
+        var(--background-color) 50%
+      );
+    }
+  }
+
+  &-inner {
+    z-index: 10;
+    position: relative;
+  }
+}
