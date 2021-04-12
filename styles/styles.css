@@ -1,0 +1,587 @@
+@charset "UTF-8";
+/**
+ * This file is used to describe our core elements. These are the
+ * base styles for most elements, as well as anything that wasn't 
+ * covered in the CSS reset
+ */
+@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@900&family=Fira+Sans:wght@200;400&family=Fira+Sans+Extra+Condensed:wght@400&display=swap");
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/**
+ * Let's put some basic setup stuff here for now...
+ */
+:root {
+  /* Here's our colors!!! */
+  --background-color: #161616;
+  --foreground-color: #ffffff;
+  /* --background-color: #ffffff;
+  --foreground-color: #161616; */
+  /* Setting up our fonts */
+  --font-headers: "Darker Grotesque";
+  --font-regular: "Fira Sans";
+  /* This is where we define ALL the font sizes!!! */
+  --base-font-size: 1.4rem;
+  --header-font-scale-factor: 0.25;
+  --h6-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 1rem
+  );
+  --h5-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 2rem
+  );
+  --h4-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 3rem
+  );
+  --h3-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 5rem
+  );
+  --h2-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 8rem
+  );
+  --h1-font-size: calc(
+    var(--base-font-size) + var(--header-font-scale-factor) * 13rem
+  );
+  --tag-font-scale-factor: 0.7;
+  --tag-font-size: calc(var(--base-font-size) * var(--tag-font-scale-factor));
+  --grid-link-font-size: calc(var(--base-font-size) * 1.5)
+  /**
+  * Managing line heights
+  */
+  --text-line-height: 1.35;
+  --header-line-height: 1;
+  /**
+  * Space stuff 🚀
+  */
+  --base-space-size: 1rem;
+  --space-half:calc(var(--base-font-size) * 0.5);
+  --space-1: calc(var(--base-font-size) * 1);
+  --space-2: calc(var(--base-font-size) * 2);
+  --space-3: calc(var(--base-font-size) * 3);
+  --space-4: calc(var(--base-font-size) * 5);
+  --space-5: calc(var(--base-font-size) * 8);
+}
+
+/**
+ * Some additional resets. Removing default margin and padding and
+ * setting box-sizing to "border-box" because why wouldn't you???
+ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Setting up the body styles 🕺
+ */
+body {
+  background: var(--background-color);
+  color: var(--foreground-color);
+  font-weight: 100;
+  font-family: var(--font-regular);
+  font-size: var(--base-font-size);
+  line-height: 1.35;
+  /* I don't know if this should be a variable. Haven't needed it yet though! */
+}
+
+/**
+ * @TODO All elements should be wrapped in a "main" tag at the root.
+ * Not sure if this should be a component or not, but we'll leave
+ * it as-is for now.
+ *
+ * Also not sure if this stuff should be left to the the end-user
+ * to customize???
+ *
+ * ~reccanti 4/11/2021
+ */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-half);
+}
+main > *:not(:first-child) {
+  margin-top: var(--space-2);
+}
+main section:not(:first-child) {
+  margin-top: var(--space-3);
+}
+@media (min-width: 800px) {
+  main {
+    padding: var(--space-2);
+  }
+}
+
+/**
+* @TODO - Maybe it's not the best idea to have such a
+* specific way of targeting this...
+*/
+section div > *:not(:first-child) {
+  margin-top: var(--space-1);
+}
+
+/**
+* Let's make those horizontal rules fancy 🎩
+*/
+hr {
+  border: none;
+  border-bottom: 0.35rem dotted;
+  color: var(--foreground-color);
+}
+
+/**
+* Umm, I guess some list things
+*/
+ul, ol {
+  list-style-type: disc;
+}
+
+ul > li,
+ol > li {
+  margin-left: var(--space-1);
+}
+
+li:not(:first-child) {
+  margin-top: var(--space-1);
+}
+
+/**
+ * L33t c0d3
+ */
+code {
+  font-family: monospace;
+}
+
+/**
+* Heck yeah. Time for links, baby
+*/
+a {
+  display: inline-block;
+  color: var(--foreground-color);
+  font-weight: bold;
+}
+
+a:hover,
+a:focus {
+  background: var(--foreground-color);
+  color: var(--background-color);
+}
+
+/**
+* Header Crap!
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-headers);
+  line-height: 1;
+}
+
+h6 {
+  font-size: var(--h6-font-size);
+}
+
+h5 {
+  font-size: var(--h5-font-size);
+}
+
+h4 {
+  font-size: var(--h4-font-size);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+}
+
+/**
+* Buttons? Classic
+*/
+button {
+  all: unset;
+  cursor: pointer;
+  border: 1px solid var(--foreground-color);
+  padding: var(--space-half);
+  text-align: center;
+}
+
+button:hover,
+button:focus {
+  background: var(--foreground-color);
+  color: var(--background-color);
+}
+
+/**
+* All that good form stuff!!!
+*/
+label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: var(--tag-font-size);
+}
+
+/**
+* @TODO - I don't like that I need to use this weird class,
+* but I don't have a better way of dealing with this right
+* now. Maybe use a :has() polyfill?
+*/
+label.required::after {
+  content: "(required)";
+}
+
+label > * {
+  margin-top: var(--space-half);
+}
+
+/**
+* @TODO It seems like, in addition to the "unset", I need to
+* also do some sort of "reset". Bleh
+* ~reccanti 4/12/2021
+*/
+textarea {
+  /* resets */
+  background: unset;
+  font: unset;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  box-sizing: border-box;
+  resize: both;
+  border: 1px solid var(--foreground-color);
+  padding: var(--space-half);
+  font-style: italic;
+  font-size: var(--base-font-size);
+  width: 100%;
+}
+
+textarea:focus {
+  outline: none;
+  background-color: var(--foreground-color);
+  color: var(--background-color);
+  font-style: normal;
+}
+
+input[type=text] {
+  /* resets */
+  background: unset;
+  font: unset;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+  box-sizing: border-box;
+  border: 1px solid var(--foreground-color);
+  padding: var(--space-half);
+  font-style: italic;
+  font-size: var(--base-font-size);
+  width: 100%;
+}
+
+input[type=text]:focus {
+  outline: none;
+  background-color: var(--foreground-color);
+  color: var(--background-color);
+  font-style: normal;
+}
+
+input:required {
+  border-style: double;
+}
+
+/**
+ * This file is where we set up our more complex components,
+ * things that require
+ */
+/**
+* This is the place where we'll make our cool sections 😎
+*/
+.ShmancySection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.ShmancySection::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: var(--space-1);
+  margin-top: var(--space-3);
+  background-size: 0.5rem 0.5rem;
+  /* Yeah this is really specific to this one thing, so I don't want to put this in a variable yet */
+  background-image: repeating-linear-gradient(45deg, var(--foreground-color) 0, var(--foreground-color) 1px, var(--background-color) 0, var(--background-color) 50%);
+}
+@media (min-width: 700px) {
+  .ShmancySection-inner {
+    z-index: 10;
+    background: var(--background-color);
+    border: 1px solid var(--foreground-color);
+    padding: var(--space-1);
+    margin-right: var(--space-1);
+  }
+  .ShmancySection::after {
+    content: "";
+    flex: 1;
+    display: block;
+    position: absolute;
+    width: calc(100% - var(--space-1));
+    height: 100%;
+    margin-top: 0;
+    top: var(--space-1);
+    left: var(--space-1);
+    background-size: 0.5rem 0.5rem;
+    /* Yeah this is really specific to this one thing, so I don't want to put this in a variable yet */
+    background-image: repeating-linear-gradient(45deg, var(--foreground-color) 0, var(--foreground-color) 1px, var(--background-color) 0, var(--background-color) 50%);
+  }
+}
+
+/**
+* Tag, you're it!
+*/
+.Tag {
+  all: unset;
+  margin: 0 !important;
+  /* Bleh */
+  font-size: var(--tag-font-size);
+}
+
+.TagList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.TagList > .Tag:not(:first-child)::before {
+  content: "|";
+  margin: 0 var(--space-1);
+}
+
+/**
+* You've seen links, but you've never seen
+* my fancy links ✨
+*/
+.LinkGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: 1fr;
+  /**
+   * @TODO - Not sold on these sizes
+   * ~reccanti 4/10/2021
+   */
+}
+@media (min-width: 700px) {
+  .LinkGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.LinkGridItem {
+  display: flex;
+  margin: 0 !important;
+  /* Bleh */
+  position: relative;
+}
+.LinkGridItem-preview {
+  width: 100%;
+  flex: 0 0 auto;
+}
+.LinkGridItem-linkWrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.LinkGridItem-linkWrapper:hover, .LinkGridItem-linkWrapper:focus {
+  /**
+   * These effects are a little jarring. Maybe use some
+   * sort of "wipe" effect?
+   */
+}
+.LinkGridItem-linkWrapper:hover:before, .LinkGridItem-linkWrapper:focus:before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  background: var(--background-color);
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+}
+.LinkGridItem-linkWrapper:hover .LinkGridItem-description, .LinkGridItem-linkWrapper:focus .LinkGridItem-description {
+  opacity: 1;
+}
+.LinkGridItem-description {
+  display: flex;
+  position: absolute;
+  background: var(--foreground-color);
+  width: calc(100% - var(--space-1) * 2);
+  height: calc(100% - var(--space-1) * 2);
+  margin: var(--space-1);
+  padding: var(--space-1);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Fira Sans Extra Condensed";
+  font-size: var(--grid-link-font-size);
+  mix-blend-mode: lighten;
+  opacity: 0;
+  top: 0;
+  /* Fixes a weird safari bug where the text was being shifted down :shrug: */
+}
+
+/**
+* Comics!!!
+*/
+.Comic-image {
+  width: 100%;
+}
+.Comic-nav {
+  display: flex;
+}
+.Comic-nav > * {
+  flex: 1;
+}
+
+/**
+ * @TODOs
+ * 
+ * Need to better delineate between "general styling" and "styling for
+ * for the styleguide". Will update that!
+ * ~reccanti 4/10/2021
+ */
