@@ -1,0 +1,179 @@
+/**
+ * This file is where we set up our more complex components,
+ * things that require
+ */
+
+/**
+* This is the place where we'll make our cool sections 😎
+*/
+
+.ShmancySection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: var(--space-1);
+    margin-top: var(--space-3);
+
+    background-size: 0.5rem 0.5rem; /* Yeah this is really specific to this one thing, so I don't want to put this in a variable yet */
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--foreground-color) 0,
+      var(--foreground-color) 1px,
+      var(--background-color) 0,
+      var(--background-color) 50%
+    );
+  }
+
+  @media (min-width: 700px) {
+    &-inner {
+      z-index: 10;
+      background: var(--background-color);
+      border: 1px solid var(--foreground-color);
+      padding: var(--space-1);
+      margin-right: var(--space-1);
+    }
+
+    &::after {
+      content: "";
+      flex: 1;
+      display: block;
+      position: absolute;
+      width: calc(100% - var(--space-1));
+      height: 100%;
+      margin-top: 0;
+
+      top: var(--space-1);
+      left: var(--space-1);
+
+      background-size: 0.5rem 0.5rem; /* Yeah this is really specific to this one thing, so I don't want to put this in a variable yet */
+      background-image: repeating-linear-gradient(
+        45deg,
+        var(--foreground-color) 0,
+        var(--foreground-color) 1px,
+        var(--background-color) 0,
+        var(--background-color) 50%
+      );
+    }
+  }
+}
+
+/**
+* Tag, you're it!
+*/
+.Tag {
+  all: unset;
+  margin: 0 !important; /* Bleh */
+  font-size: var(--tag-font-size);
+}
+
+.TagList {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > .Tag:not(:first-child)::before {
+    content: "|";
+    margin: 0 var(--space-1);
+  }
+}
+
+/**
+* You've seen links, but you've never seen
+* my fancy links ✨
+*/
+
+.LinkGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: 1fr;
+
+  /**
+   * @TODO - Not sold on these sizes
+   * ~reccanti 4/10/2021
+   */
+  @media (min-width: 700px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.LinkGridItem {
+  $root: &;
+  display: flex;
+  margin: 0 !important; /* Bleh */
+  position: relative;
+
+  &-preview {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  &-linkWrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+      &:before {
+        content: "";
+        pointer-events: none;
+
+        position: absolute;
+        background: var(--background-color);
+        opacity: 0.5;
+        width: 100%;
+        height: 100%;
+      }
+
+      /**
+       * These effects are a little jarring. Maybe use some
+       * sort of "wipe" effect?
+       */
+      & #{$root}-description {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-description {
+    display: flex;
+    position: absolute;
+    background: var(--foreground-color);
+    width: calc(100% - var(--space-1) * 2);
+    height: calc(100% - var(--space-1) * 2);
+    margin: var(--space-1);
+    padding: var(--space-1);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Fira Sans Extra Condensed";
+    font-size: var(--grid-link-font-size);
+    mix-blend-mode: lighten;
+    opacity: 0;
+    top: 0; /* Fixes a weird safari bug where the text was being shifted down :shrug: */
+  }
+}
+
+/**
+* Comics!!!
+*/
+
+.Comic {
+  &-image {
+    width: 100%;
+  }
+
+  &-nav {
+    display: flex;
+
+    > * {
+      flex: 1;
+    }
+  }
+}

@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apple ][000</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
   </head>
   <body>
-    <main class="wrapper">
+    <main>
       <!-- Splash -->
       <section>
         <div>
@@ -16,8 +16,8 @@
         </div>
       </section>
       <!-- Intro -->
-      <section>
-        <div>
+      <section class="ShmancySection">
+        <div class="ShmancySection-inner">
           <h2>Welcome to Apple ][000!</h2>
           <p>
             This is a place to iterate on this new theme. The goal is to
@@ -34,8 +34,8 @@
         </div>
       </section>
       <!-- Let's replicate a blog entry -->
-      <section>
-        <div>
+      <section class="ShmancySection">
+        <div class="ShmancySection-inner">
           <h2>Let's Simulate a Blog Entry!</h2>
           <p>
             I'm just going to try and reprint a blog post I've posted and see
@@ -200,8 +200,8 @@
         </div>
       </section>
       <!-- My fancy way of linking to projects -->
-      <section>
-        <div>
+      <section class="ShmancySection">
+        <div class="ShmancySection-inner">
           <h2>Fancy Link Grid</h2>
           <p>
             I don't know what else to call this. I just want a nice way of
@@ -211,83 +211,103 @@
           <ul class="LinkGrid">
             <li class="LinkGridItem">
               <!-- I'm not sure if these links are accessible. Will need to do some testing for that -->
-              <a href="#"
+              <a class="LinkGridItem-linkWrapper" href="#"
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">
                     My Face is not My Own
                   </div>
                 </div>
-                <img src="assets/MFINMO-thumbnail.jpg" role="presentation"
+                <img
+                  class="LinkGridItem-preview"
+                  src="assets/MFINMO-thumbnail.jpg"
+                  role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
-              <a href="#"
+              <a class="LinkGridItem-linkWrapper" href="#"
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">Sketch</div>
                 </div>
-                <img src="assets/sketches-preview.jpeg" role="presentation"
+                <img
+                  class="LinkGridItem-preview"
+                  src="assets/sketches-preview.jpeg"
+                  role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
-              <a href="#"
+              <a class="LinkGridItem-linkWrapper" href="#"
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">The Faerie</div>
                 </div>
                 <img
+                  class="LinkGridItem-preview"
                   src="assets/TheFaerie-description-2.jpg"
                   role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
-              <a href="#"
+              <a class="LinkGridItem-linkWrapper" href="#"
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">The Wyrm</div>
                 </div>
-                <img src="assets/thewyrm-preview.jpg" role="presentation"
+                <img
+                  class="LinkGridItem-preview"
+                  src="assets/thewyrm-preview.jpg"
+                  role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
-              <a href="#"
+              <a class="LinkGridItem-linkWrapper" href="#"
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">The Faerie</div>
                 </div>
                 <img
+                  class="LinkGridItem-preview"
                   src="assets/TheFaerie-description-2.jpg"
                   role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
-              <a href="#"
+              <a class="LinkGridItem-linkWrapper" href="#"
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">The Wyrm</div>
                 </div>
-                <img src="assets/thewyrm-preview.jpg" role="presentation"
+                <img
+                  class="LinkGridItem-preview"
+                  src="assets/thewyrm-preview.jpg"
+                  role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
-              <a href="#"
+              <a class="LinkGridItem-linkWrapper" href="#"
                 ><div class="LinkGridItem-description">
                   <div aria-label class="LinkGridItem-innerDescription">
                     My Face is not My Own
                   </div>
                 </div>
-                <img src="assets/MFINMO-thumbnail.jpg" role="presentation"
+                <img
+                  class="LinkGridItem-preview"
+                  src="assets/MFINMO-thumbnail.jpg"
+                  role="presentation"
               /></a>
             </li>
             <li class="LinkGridItem">
-              <a href="#"
+              <a class="LinkGridItem-linkWrapper" href="#"
                 ><div class="LinkGridItem-description">
                   <div class="LinkGridItem-innerDescription">Sketch</div>
                 </div>
-                <img src="assets/sketches-preview.jpeg" role="presentation"
+                <img
+                  class="LinkGridItem-preview"
+                  src="assets/sketches-preview.jpeg"
+                  role="presentation"
               /></a>
             </li>
           </ul>
         </div>
       </section>
       <!-- Let's document all our headers -->
-      <section>
-        <div>
+      <section class="ShmancySection">
+        <div class="ShmancySection-inner">
           <h2>Comic Page</h2>
           <p>
             Oh yeah, here it is, the moment you've all been waiting for. Let's
@@ -295,7 +315,11 @@
           </p>
           <hr />
           <div class="Comic">
-            <img aria-labelledby="Transcription" src="assets/thewyrm5.jpg" />
+            <img
+              class="Comic-image"
+              aria-labelledby="Transcription"
+              src="assets/thewyrm5.jpg"
+            />
             <nav class="Comic-nav">
               <button><<</button>
               <button><</button>
@@ -328,8 +352,8 @@
           </label>
         </div>
       </section>
-      <section>
-        <div>
+      <section class="ShmancySection">
+        <div class="ShmancySection-inner">
           <h2>Text!</h2>
           <p>
             It's kind of become apparent that I need to be able to compare the
@@ -360,8 +384,8 @@
         </div>
       </section>
       <!-- Forms??? I feel so professional! -->
-      <section>
-        <div>
+      <section class="ShmancySection">
+        <div class="ShmancySection-inner">
           <h2>Forms!</h2>
           <p>
             Time for every web designer's favorite step of the process:
