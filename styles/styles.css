@@ -4,7 +4,7 @@
  * base styles for most elements, as well as anything that wasn't 
  * covered in the CSS reset
  */
-@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@900&family=Fira+Sans:wght@200;400&family=Fira+Sans+Extra+Condensed:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@900&family=Fira+Sans:wght@200;400&family=Fira+Sans+Extra+Condensed:wght@400;700&display=swap");
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -576,6 +576,45 @@ input:required {
 }
 .Comic-nav > * {
   flex: 1;
+}
+
+/**
+ * Splash 💦
+ */
+.Splash {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: top;
+  transform: rotate(-5deg) skew(-5deg);
+}
+.Splash--big .Splash-main {
+  font-size: min(30vw, 17rem);
+}
+.Splash-main {
+  font-size: min(20vw, 12rem);
+  font-family: "Fira Sans Extra Condensed";
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+}
+.Splash-main::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 0.5rem 0.5rem;
+  /* Yeah this is really specific to this one thing, so I don't want to put this in a variable yet */
+  background-image: repeating-linear-gradient(45deg, var(--foreground-color) 0, var(--foreground-color) 1px, var(--background-color) 0, var(--background-color) 50%);
+}
+.Splash-inner {
+  z-index: 10;
+  position: relative;
 }
 
 /**
