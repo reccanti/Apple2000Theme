@@ -90,6 +90,7 @@
 .LinkGrid {
   list-style: none;
   display: grid;
+  grid-auto-flow: dense;
   grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: 1fr;
 
@@ -159,6 +160,13 @@
     mix-blend-mode: lighten;
     opacity: 0;
     top: 0; /* Fixes a weird safari bug where the text was being shifted down :shrug: */
+  }
+
+  &--recent {
+    @media (min-width: 800px) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
   }
 }
 
