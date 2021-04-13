@@ -5,6 +5,22 @@
  * covered in the CSS reset
  */
 @import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@900&family=Fira+Sans:wght@200;400&family=Fira+Sans+Extra+Condensed:wght@400;700&display=swap");
+/* Webfont CSS setup for ChronoType by Caveras */
+@font-face {
+  font-family: "ChronoType";
+  src: url("/assets/chronotype/ChronoType.eot");
+  src: url("/assets/chronotype/ChronoType.eot?#iefix") format("embedded-opentype"), url("/assets/chronotype/ChronoType.woff") format("woff"), url("/assets/chronotype/ChronoType.ttf") format("truetype"), url("/assets/chronotype/ChronoType.svg#ChronoType") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: "ChronoType";
+    src: url("/assets/chronotype/ChronoType.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -141,8 +157,8 @@ table {
 }
 
 /**
- * Let's put some basic setup stuff here for now...
- */
+  * Let's put some basic setup stuff here for now...
+  */
 :root {
   /* Here's our colors!!! */
   --background-color: #161616;
@@ -150,11 +166,11 @@ table {
   /* --background-color: #ffffff;
   --foreground-color: #161616; */
   /* Setting up our fonts */
-  --font-headers: "Darker Grotesque";
+  --font-headers: "ChronoType";
   --font-regular: "Fira Sans";
   /* This is where we define ALL the font sizes!!! */
   --base-font-size: 1.4rem;
-  --header-font-scale-factor: 0.25;
+  --header-font-scale-factor: 0.15;
   --h6-font-size: calc(
     var(--base-font-size) + var(--header-font-scale-factor) * 1rem
   );
@@ -173,9 +189,9 @@ table {
   --h1-font-size: calc(
     var(--base-font-size) + var(--header-font-scale-factor) * 13rem
   );
-  --tag-font-scale-factor: 0.7;
+  --tag-font-scale-factor: 0.8;
   --tag-font-size: calc(var(--base-font-size) * var(--tag-font-scale-factor));
-  --grid-link-font-size: calc(var(--base-font-size) * 1.5)
+  --grid-link-font-size: calc(var(--base-font-size) * 1.5);
   /**
   * Managing line heights
   */
@@ -185,12 +201,17 @@ table {
   * Space stuff 🚀
   */
   --base-space-size: 1rem;
-  --space-half:calc(var(--base-font-size) * 0.5);
+  --space-half: calc(var(--base-font-size) * 0.5);
   --space-1: calc(var(--base-font-size) * 1);
   --space-2: calc(var(--base-font-size) * 2);
   --space-3: calc(var(--base-font-size) * 3);
   --space-4: calc(var(--base-font-size) * 5);
   --space-5: calc(var(--base-font-size) * 8);
+}
+@media (min-width: 800px) {
+  :root {
+    --header-font-scale-factor: 0.25;
+  }
 }
 
 /**
@@ -201,6 +222,7 @@ table {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  min-height: 0vw;
 }
 
 /**
@@ -263,7 +285,8 @@ hr {
 /**
 * Umm, I guess some list things
 */
-ul, ol {
+ul,
+ol {
   list-style-type: disc;
 }
 
@@ -308,7 +331,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-headers);
-  line-height: 1;
+  line-height: 0.8;
 }
 
 h6 {
@@ -481,6 +504,7 @@ input:required {
   margin: 0 !important;
   /* Bleh */
   font-size: var(--tag-font-size);
+  font-family: var(--font-headers);
 }
 
 .TagList {
@@ -499,6 +523,7 @@ input:required {
 .LinkGrid {
   list-style: none;
   display: grid;
+  grid-auto-flow: dense;
   grid-template-columns: repeat(1, 1fr);
   grid-auto-rows: 1fr;
   /**
@@ -559,10 +584,17 @@ input:required {
   text-transform: uppercase;
   font-family: "Fira Sans Extra Condensed";
   font-size: var(--grid-link-font-size);
+  font-weight: 500;
   mix-blend-mode: lighten;
   opacity: 0;
   top: 0;
   /* Fixes a weird safari bug where the text was being shifted down :shrug: */
+}
+@media (min-width: 800px) {
+  .LinkGridItem--recent {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
 }
 
 /**
@@ -588,33 +620,42 @@ input:required {
   justify-content: center;
   text-align: center;
   vertical-align: top;
-  transform: rotate(-5deg) skew(-5deg);
+  flex-direction: column;
 }
 .Splash--big .Splash-main {
   font-size: min(30vw, 17rem);
 }
 .Splash-main {
   font-size: min(20vw, 12rem);
-  font-family: "Fira Sans Extra Condensed";
   font-weight: 700;
   text-transform: uppercase;
   position: relative;
-}
-.Splash-main::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  z-index: 1;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 0.5rem 0.5rem;
-  /* Yeah this is really specific to this one thing, so I don't want to put this in a variable yet */
-  background-image: repeating-linear-gradient(45deg, var(--foreground-color) 0, var(--foreground-color) 1px, var(--background-color) 0, var(--background-color) 50%);
+  font-family: "ChronoType";
 }
 .Splash-inner {
   z-index: 10;
   position: relative;
+}
+.Splash-iconLinks {
+  flex: 0;
+}
+
+/**
+ * Let's make those social media icons!!!
+ */
+.SoshMeats {
+  display: inline-block;
+  height: 3rem;
+  width: 3rem;
+  padding: 0.5rem;
+  border: 3px solid var(--foreground-color);
+}
+.SoshMeats-icon {
+  display: block;
+}
+.SoshMeats:hover .SoshMeats-icon {
+  background: var(--background-color);
+  filter: invert(1);
 }
 
 /**
