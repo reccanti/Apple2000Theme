@@ -1,10 +1,4 @@
 @charset "UTF-8";
-/**
- * This file is used to describe our core elements. These are the
- * base styles for most elements, as well as anything that wasn't 
- * covered in the CSS reset
- */
-@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@900&family=Fira+Sans:wght@200;400&family=Fira+Sans+Extra+Condensed:wght@400;700&display=swap");
 /* Webfont CSS setup for ChronoType by Caveras */
 @font-face {
   font-family: "ChronoType";
@@ -20,6 +14,19 @@
     font-weight: normal;
     font-style: normal;
   }
+}
+/* Webfont CSS setup for ChronoType by Caveras */
+@font-face {
+  font-family: "Fira Sans";
+  src: url("/assets/firasans/FiraSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Fira Sans";
+  src: url("/assets/firasans/FiraSans-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
 }
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -157,14 +164,23 @@ table {
 }
 
 /**
+ * @TODO - Ehhh this is kind a catch-all right now 😓
+ * For now we'll just put anything we need in here and
+ * we'll worry about breaking it out later!
+ * ~reccanti 4/12/2021
+ */
+/**
+ * This file is used to describe our core elements. These are the
+ * base styles for most elements, as well as anything that wasn't 
+ * covered in the CSS reset
+ */
+/**
   * Let's put some basic setup stuff here for now...
   */
 :root {
   /* Here's our colors!!! */
   --background-color: #161616;
   --foreground-color: #ffffff;
-  /* --background-color: #ffffff;
-  --foreground-color: #161616; */
   /* Setting up our fonts */
   --font-headers: "ChronoType";
   --font-regular: "Fira Sans";
@@ -192,6 +208,7 @@ table {
   --tag-font-scale-factor: 0.8;
   --tag-font-size: calc(var(--base-font-size) * var(--tag-font-scale-factor));
   --grid-link-font-size: calc(var(--base-font-size) * 1.5);
+  --grid-link-recent-font-size: calc(var(--base-font-size) * 2.5);
   /**
   * Managing line heights
   */
@@ -208,7 +225,7 @@ table {
   --space-4: calc(var(--base-font-size) * 5);
   --space-5: calc(var(--base-font-size) * 8);
 }
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   :root {
     --header-font-scale-factor: 0.25;
   }
@@ -259,7 +276,7 @@ main > *:not(:first-child) {
 main section:not(:first-child) {
   margin-top: var(--space-3);
 }
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   main {
     padding: var(--space-2);
   }
@@ -582,18 +599,26 @@ input:required {
   justify-content: center;
   text-align: center;
   text-transform: uppercase;
-  font-family: "Fira Sans Extra Condensed";
-  font-size: var(--grid-link-font-size);
-  font-weight: 500;
+  font-family: var(--font-headers);
+  font-size: var(--grid-link-recent-font-size);
+  line-height: 0.8;
   mix-blend-mode: lighten;
   opacity: 0;
   top: 0;
   /* Fixes a weird safari bug where the text was being shifted down :shrug: */
 }
-@media (min-width: 800px) {
+@media (min-width: 700px) {
+  .LinkGridItem .LinkGridItem-description {
+    font-size: var(--grid-link-font-size);
+  }
+}
+@media (min-width: 700px) {
   .LinkGridItem--recent {
     grid-column: span 2;
     grid-row: span 2;
+  }
+  .LinkGridItem--recent .LinkGridItem-description {
+    font-size: var(--grid-link-recent-font-size);
   }
 }
 
