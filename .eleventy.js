@@ -48,6 +48,8 @@ module.exports = function (config) {
     }
   });
 
+  config.addPassthroughCopy({ "scss/fonts": "styles/fonts" });
+
   config.addPassthroughCopy("assets");
   config.addWatchTarget("assets");
 };
