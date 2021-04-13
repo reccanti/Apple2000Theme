@@ -614,9 +614,10 @@ input:required {
  * Splash 💦
  */
 .Splash {
-  height: 100vh;
-  display: flex;
+  min-height: 100vh;
+  display: grid;
   align-items: center;
+  align-content: center;
   justify-content: center;
   text-align: center;
   vertical-align: top;
