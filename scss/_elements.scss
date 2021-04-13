@@ -108,6 +108,8 @@ main {
   max-width: 1000px;
   margin: 0 auto;
   padding: var(--space-half);
+  // padding-top: env(safe-area-inset-top);
+  // padding-bottom: env(safe-area-inset-bottom);
 
   & > *:not(:first-child) {
     margin-top: var(--space-2);

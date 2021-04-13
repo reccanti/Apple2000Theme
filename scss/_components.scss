@@ -194,10 +194,10 @@
 
 .Splash {
   $root: &;
-  // margin: calc(-1 * var(--space-1));
-  height: 100vh;
-  display: flex;
+  min-height: 100vh;
+  display: grid;
   align-items: center;
+  align-content: center;
   justify-content: center;
   text-align: center;
   vertical-align: top;
