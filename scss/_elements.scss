@@ -3,6 +3,8 @@
  * base styles for most elements, as well as anything that wasn't 
  * covered in the CSS reset
  */
+@use 'globals';
+
 @import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@900&family=Fira+Sans:wght@200;400&family=Fira+Sans+Extra+Condensed:wght@400;700&display=swap");
 
 /**
@@ -12,8 +14,9 @@
   /* Here's our colors!!! */
   --background-color: #161616;
   --foreground-color: #ffffff;
-  /* --background-color: #ffffff;
-  --foreground-color: #161616; */
+
+  // --background-color: #ffffff;
+  // --foreground-color: #161616;
 
   /* Setting up our fonts */
   // --font-headers: "Darker Grotesque";
@@ -65,7 +68,7 @@
   --space-4: calc(var(--base-font-size) * 5);
   --space-5: calc(var(--base-font-size) * 8);
 
-  @media (min-width: 800px) {
+  @media (min-width: globals.$bp-large) {
     --header-font-scale-factor: 0.25;
   }
 }
@@ -119,7 +122,7 @@ main {
     margin-top: var(--space-3);
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: globals.$bp-large) {
     padding: var(--space-2);
   }
 }

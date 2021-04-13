@@ -2,6 +2,7 @@
  * This file is where we set up our more complex components,
  * things that require
  */
+@use 'globals';
 
 /**
 * This is the place where we'll make our cool sections 😎
@@ -29,7 +30,7 @@
     );
   }
 
-  @media (min-width: 700px) {
+  @media (min-width: globals.$bp-large) {
     &-inner {
       z-index: 10;
       background: var(--background-color);
@@ -98,7 +99,7 @@
    * @TODO - Not sold on these sizes
    * ~reccanti 4/10/2021
    */
-  @media (min-width: 700px) {
+  @media (min-width: globals.$bp-large) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -163,7 +164,7 @@
   }
 
   &--recent {
-    @media (min-width: 800px) {
+    @media (min-width: globals.$bp-large) {
       grid-column: span 2;
       grid-row: span 2;
     }
