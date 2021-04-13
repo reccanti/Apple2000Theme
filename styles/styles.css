@@ -2,15 +2,15 @@
 /* Webfont CSS setup for ChronoType by Caveras */
 @font-face {
   font-family: "ChronoType";
-  src: url("/assets/chronotype/ChronoType.eot");
-  src: url("/assets/chronotype/ChronoType.eot?#iefix") format("embedded-opentype"), url("/assets/chronotype/ChronoType.woff") format("woff"), url("/assets/chronotype/ChronoType.ttf") format("truetype"), url("/assets/chronotype/ChronoType.svg#ChronoType") format("svg");
+  src: url("./fonts/chronotype/ChronoType.eot");
+  src: url("./fonts/chronotype/ChronoType.eot?#iefix") format("embedded-opentype"), url("./fonts/chronotype/ChronoType.woff") format("woff"), url("./fonts/chronotype/ChronoType.ttf") format("truetype"), url("./fonts/chronotype/ChronoType.svg#ChronoType") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "ChronoType";
-    src: url("/assets/chronotype/ChronoType.svg") format("svg");
+    src: url("./fonts/chronotype/ChronoType.svg") format("svg");
     font-weight: normal;
     font-style: normal;
   }
@@ -18,13 +18,13 @@
 /* Webfont CSS setup for ChronoType by Caveras */
 @font-face {
   font-family: "Fira Sans";
-  src: url("/assets/firasans/FiraSans-Regular.ttf") format("truetype");
+  src: url("./fonts/firasans/FiraSans-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: "Fira Sans";
-  src: url("/assets/firasans/FiraSans-ExtraLight.ttf") format("truetype");
+  src: url("./fonts/firasans/FiraSans-ExtraLight.ttf") format("truetype");
   font-weight: 200;
   font-style: normal;
 }
