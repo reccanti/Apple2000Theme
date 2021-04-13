@@ -201,6 +201,7 @@
   justify-content: center;
   text-align: center;
   vertical-align: top;
+  flex-direction: column;
 
   &--big {
     #{$root}-main {
@@ -219,5 +220,33 @@
   &-inner {
     z-index: 10;
     position: relative;
+  }
+
+  &-iconLinks {
+    flex: 0;
+  }
+}
+
+/**
+ * Let's make those social media icons!!!
+ */
+
+.SoshMeats {
+  $root: &;
+  display: inline-block;
+  height: 3rem;
+  width: 3rem;
+  padding: 0.5rem;
+  border: 3px solid var(--foreground-color);
+
+  &-icon {
+    display: block;
+  }
+
+  &:hover {
+    #{$root}-icon {
+      background: var(--background-color);
+      filter: invert(1);
+    }
   }
 }
