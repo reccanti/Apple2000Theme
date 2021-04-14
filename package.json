@@ -8,7 +8,7 @@
     "build": "node build.js",
     "build:site": "eleventy",
     "dev": "eleventy --serve",
-    "prepublish": "npm install && node build.js"
+    "prepublishOnly": "node build.js"
   },
   "repository": {
     "type": "git",
