@@ -1,6 +1,6 @@
 {
   "name": "@meteorcity/apple2000",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A fancy theme for my website",
   "main": "dist/styles.css",
   "private": false,
@@ -8,7 +8,7 @@
     "build": "node build.js",
     "build:site": "eleventy",
     "dev": "eleventy --serve",
-    "prepublishOnly": "node build.js"
+    "prepare": "node build.js"
   },
   "repository": {
     "type": "git",

@@ -8,4 +8,6 @@ async function build() {
   await fs.copy("./scss/fonts", "./dist/fonts");
 }
 
-build();
+build().then(() => {
+  process.exit();
+});
