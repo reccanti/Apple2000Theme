@@ -34,11 +34,12 @@ async function compile({ entryFile, outDir }) {
      */
     const filename = path.resolve(
       outDir,
-      path.basename(entryFile, ".scss") + ".css"
+      `${path.basename(entryFile, ".scss")}.css`
     );
     await fs.promises.writeFile(filename, res.css);
   } catch (err) {
-    throw err;
+    /* eslint-disable-next-line no-console */
+    console.log(err);
   }
 }
 

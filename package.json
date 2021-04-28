@@ -8,7 +8,8 @@
     "build": "node build.js",
     "build:site": "eleventy",
     "dev": "eleventy --serve",
-    "prepare": "node build.js"
+    "prepare": "node build.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,11 @@
   "homepage": "https://github.com/reccanti/Apple2000Theme#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-prettier": "^3.4.0",
     "fs-extra": "^8.1.0",
+    "prettier": "^2.2.1",
     "sass": "^1.32.8"
   }
 }
